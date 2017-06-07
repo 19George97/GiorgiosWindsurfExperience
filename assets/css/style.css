@@ -1,0 +1,73 @@
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  font-family: 'Helvetica Neue';
+}
+
+body{
+  background-image: url('../images/water.png');
+}
+
+.container{
+  position: absolute;
+  overflow: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 10px solid red;
+}
+
+.surfer{
+  margin:auto;
+  position: absolute;
+  left:0;
+  bottom:0;
+  right:0;
+  width: 50px; /*essential for determining offset*/
+  height: 50px; /*essential for determining offset*/
+}
+
+.obstacle{
+  margin:auto;
+  position: absolute;
+  left:0;
+  bottom:0;
+  right:0;
+  width: 50px; /*essential for determining offset*/
+  height: 50px; /*essential for determining offset*/
+}
+
+.windarrow {
+  -ms-transform: rotate(20deg); /* IE 9 */
+  -webkit-transform: rotate(20deg); /* Safari */
+  transform: rotate(20deg);
+}
+
+
+.surfer-horizontalflip {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */
+  transform: rotate(90deg);
+}
+
+.surferdown {
+  -moz-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+  filter: FlipV;
+  -ms-filter: "FlipV";
+}
+
+.surferleft {
+   transform: rotate(90deg) scaleY(-1);
+ }
+
+.surferright {
+  transform: rotate(90deg);
+}
