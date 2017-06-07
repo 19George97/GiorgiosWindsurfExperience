@@ -4,7 +4,7 @@
 class wind {
     private _elSpeed : any = document.getElementById('windspeed');
     private _elDirection : any = document.getElementById('winddirection');
-    private _windspeed : number;
+    public _windspeed : number;
     private _windDirection : number;
 
     private _className: string = 'surfer';

@@ -2,7 +2,7 @@
 class Game{
   public _el : Element = document.querySelector('.container');
   private _surfer : surfer;
-  private _wind : wind;
+  public _wind : wind;
   private _zboat : zboat;
   private _windowListener: WindowListener;
   private _collision: Collision;
@@ -31,8 +31,6 @@ class Game{
    */
   private loop = () => {
     this.render();
-    // console.log('gameover is ' + this._gameOver);
-    // console.log('collide is' + this.collide());
     if(this.collide() === true){
       this._gameOver = true;
     }

@@ -25,14 +25,11 @@ class KeyListener
 
 
         if(e.type == 'keydown'){
-            // console.log('in keydown');
             if (e.key == 'ArrowLeft') this._keyLeft = true;
             else if (e.key == 'ArrowUp') this._keyUp = true;
             else if (e.key == 'ArrowRight') this._keyRight = true;
             else if (e.key == 'ArrowDown') this._keyDown = true;
         }
-
-
 
         if(e.type == 'keyup'){
             if (e.key == 'ArrowLeft') this._keyLeft = false;
@@ -41,7 +38,7 @@ class KeyListener
             else if (e.key == 'ArrowDown') this._keyDown = false;
         }
 
-    }
+    };
 
     /**
      * Get the keyevents
@@ -63,7 +60,6 @@ class KeyListener
     get keyRight(): any {
         return this._keyRight;
     }
-
 
     get keyDown(): any {
         return this._keyDown;

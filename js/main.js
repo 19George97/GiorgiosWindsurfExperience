@@ -94,19 +94,24 @@ var Obstacle = (function () {
         if (winddirection > 0 && winddirection < 90) {
             this._xPos += windspeed * 2;
             this._yPos += windspeed * 2;
+            this.lastDirection = winddirection;
         }
         else if (winddirection > 90 && winddirection < 180) {
             this._xPos += windspeed * 2;
             this._yPos -= windspeed * 2;
+            this.lastDirection = winddirection;
         }
         else if (winddirection > 180 && winddirection < 270) {
             this._xPos -= windspeed * 2;
             this._yPos -= windspeed * 2;
+            this.lastDirection = winddirection;
         }
         else if (winddirection > 270 && winddirection < 360) {
             this._xPos -= windspeed * 2;
             this._yPos += windspeed * 2;
+            this.lastDirection = winddirection;
         }
+        console.log('new lastdirection ' + this.lastDirection);
     };
     Obstacle.prototype.render = function () {
         this._el.style.bottom = this._yPos + 'px';
@@ -232,38 +237,48 @@ var Collision = (function () {
         this._game = game;
         this._surfer = this._game.surfer._el;
         this._boat1 = this._game.zboat._el;
+        this.boat1object = this._game.zboat;
         this._window = this._game.windowListener;
     }
     Collision.prototype.checkCol = function () {
-        this.surferOutOfBounds();
+        this.boatOutOfBounds();
+        if (this.boatSurferCollision() || this.surferOutOfBounds()) {
+            var game = document.querySelector('.container');
+            this._el.className = 'collisiontrue';
+            this._el.innerText = 'YOU FAILED';
+            this._el.setAttribute('style', 'z-index: 5; font-size: 75px; background-color: red; opacity: .8; width:' + this._window.windowWidth + 'px; height: ' + this._window.windowHeight + 'px;');
+            game.appendChild(this._el);
+            return true;
+        }
+        return false;
+    };
+    Collision.prototype.boatSurferCollision = function () {
         if (this._surfer.offsetLeft + this._surfer.width >= this._boat1.offsetLeft && this._surfer.offsetLeft <= this._boat1.offsetLeft + this._boat1.width) {
             if (this._surfer.offsetTop + this._surfer.height >= this._boat1.offsetTop && this._surfer.offsetTop <= this._boat1.offsetTop + this._boat1.height) {
-                var game = document.querySelector('.container');
-                this._el.className = 'collisiontrue';
-                this._el.innerText = 'YOU FAILED';
-                this._el.setAttribute('style', 'z-index: 5; font-size: 75px; background-color: red; opacity: .8; width:' + this._window.windowWidth + 'px; height: ' + this._window.windowHeight + 'px;');
-                game.appendChild(this._el);
                 return true;
             }
         }
         return false;
     };
+    Collision.prototype.boatOutOfBounds = function () {
+        console.log('boat gaat altijd voor debuggen weg');
+        console.log(this.boat1object.lastDirection);
+        this.boat1object.move(3, (this.boat1object.lastDirection / 2));
+    };
     Collision.prototype.surferOutOfBounds = function () {
         if (this._surfer.offsetLeft <= 0) {
-            console.log('left border');
-            this._game._gameOver = true;
+            return true;
         }
         if ((this._surfer.offsetLeft + this._surfer.width + 15) >= this._window.windowWidth) {
-            console.log('right border');
-            this._game._gameOver = true;
+            return true;
         }
-        console.log('offset top ' + this._surfer.offsetTop + ' window height ' + this._window.windowHeight);
         if (this._surfer.offsetTop <= 0) {
-            this._game._gameOver = true;
+            return true;
         }
         if ((this._surfer.offsetTop + this._surfer.height + 10) >= this._window.windowHeight) {
-            this._game._gameOver = true;
+            return true;
         }
+        return false;
     };
     return Collision;
 }());

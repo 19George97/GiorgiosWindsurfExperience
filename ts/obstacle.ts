@@ -10,6 +10,7 @@ class Obstacle {
     private _xPos: number = 0;
     private _yPos: number = 350;
     public _name: string;
+    public lastDirection: number;
 
 
     constructor(name: string, imageName: string) {
@@ -23,39 +24,25 @@ class Obstacle {
 
 
     public move(windspeed: number, winddirection: number) {
-
         // links of recht bewegen door de wind
         if(winddirection > 0 &&  winddirection < 90) {
             this._xPos += windspeed * 2;
             this._yPos += windspeed * 2;
+            this.lastDirection = winddirection;
         } else if (winddirection > 90 && winddirection < 180){
             this._xPos += windspeed * 2;
             this._yPos -= windspeed * 2;
+            this.lastDirection = winddirection;
         } else if (winddirection > 180 && winddirection < 270){
             this._xPos -= windspeed * 2;
             this._yPos -= windspeed * 2;
+            this.lastDirection = winddirection;
         } else if (winddirection > 270 && winddirection < 360){
             this._xPos -= windspeed * 2;
             this._yPos += windspeed * 2;
+            this.lastDirection = winddirection;
         }
-
-
-        // if (button.keyRight){
-        //     // console.log('right');
-        //     this._xPos += 7;
-        // }
-        // if (button.keyLeft){
-        //     // console.log('left');
-        //     this._xPos -= 7;
-        // }
-        // if (button.keyUp) {
-        //     // console.log('up');
-        //     this._yPos += 5;
-        // }
-        // if (button.keyDown) {
-        //     // console.log('up');
-        //     this._yPos -= 5;
-        // }
+        console.log('new lastdirection ' + this.lastDirection);
     }
 
 

@@ -6,7 +6,8 @@ class Collision{
     private _window: any;
     // private _surfer = this._game.surfer._el;
     private _surfer: any;
-    private _boat1: any;
+    public _boat1: any;
+    private boat1object: zboat;
     // private _boat1 = this._game.zboat._el;
 
 
@@ -18,6 +19,7 @@ class Collision{
         this._game = game;
         this._surfer = this._game.surfer._el;
         this._boat1 = this._game.zboat._el;
+        this.boat1object = this._game.zboat;
         this._window = this._game.windowListener;
     }
 
@@ -25,45 +27,74 @@ class Collision{
      * What to do if objects collide
      */
     public checkCol(){
-       
 
+        this.boatOutOfBounds();
 
+        if(this.boatSurferCollision() || this.surferOutOfBounds()){
+            const game = document.querySelector('.container');
+            this._el.className = 'collisiontrue';
+            this._el.innerText = 'YOU FAILED';
+            this._el.setAttribute('style', 'z-index: 5; font-size: 75px; background-color: red; opacity: .8; width:' + this._window.windowWidth + 'px; height: ' + this._window.windowHeight + 'px;');
+            game.appendChild(this._el);
+            return true;
+        }
 
-        // let width = this._window.windowWidth;
+        return false;
+    }
 
-        this.surferOutOfBounds();
-
-
+    private boatSurferCollision(){
         if(this._surfer.offsetLeft + this._surfer.width >= this._boat1.offsetLeft && this._surfer.offsetLeft <= this._boat1.offsetLeft + this._boat1.width){
             if (this._surfer.offsetTop + this._surfer.height >= this._boat1.offsetTop && this._surfer.offsetTop <= this._boat1.offsetTop + this._boat1.height){
-                const game = document.querySelector('.container');
-                this._el.className = 'collisiontrue';
-                this._el.innerText = 'YOU FAILED';
-                this._el.setAttribute('style', 'z-index: 5; font-size: 75px; background-color: red; opacity: .8; width:' + this._window.windowWidth + 'px; height: ' + this._window.windowHeight + 'px;');
-                game.appendChild(this._el);
                 return true;
             }
         }
         return false;
+    }
 
+    private boatOutOfBounds(){
+
+        console.log('boat gaat altijd voor debuggen weg');
+        // console.log('windspeed is '+ this._game._wind.windspeed);
+        console.log(this.boat1object.lastDirection);
+        this.boat1object.move(3, (this.boat1object.lastDirection / 2));
+
+
+        // if(this._boat1.offsetLeft <= 0){
+        //     console.log('boat gaat links weg');
+        //     this.boat1object.move(this._game._wind.windspeed, (this._boat1.lastDirection / 2));
+        // }
+        // if((this._boat1.offsetLeft + this._boat1.width + 15) >= this._window.windowWidth){
+        //     console.log('boat gaat rechts weg');
+        //     this.boat1object.move(this._game._wind.windspeed, (this._boat1.lastDirection / 2));
+        // }
+        // if(this._boat1.offsetTop <= 0) {
+        //     console.log('boat gaat boven weg');
+        //     this.boat1object.move(this._game._wind.windspeed, (this._boat1.lastDirection / 2));
+        // }
+        // if((this._boat1.offsetTop + this._boat1.height + 10) >= this._window.windowHeight) {
+        //     console.log('boat gaat onder weg');
+        //     this.boat1object.move(this._game._wind.windspeed, (this._boat1.lastDirection / 2));
+        // }
     }
 
     private surferOutOfBounds(){
         if(this._surfer.offsetLeft <= 0){
-            console.log('left border'); //stop the game
-            this._game._gameOver = true;
+            return true;
+            // this._game._gameOver = true;
         }
         if((this._surfer.offsetLeft + this._surfer.width + 15) >= this._window.windowWidth){
-            console.log('right border'); //stop the game
-            this._game._gameOver = true;
+            return true;
+            // this._game._gameOver = true;
         }
-        console.log('offset top ' + this._surfer.offsetTop + ' window height ' + this._window.windowHeight );
         if(this._surfer.offsetTop <= 0) {
-            this._game._gameOver = true;
+            return true;
+            // this._game._gameOver = true;
         }
         if((this._surfer.offsetTop + this._surfer.height + 10) >= this._window.windowHeight) {
-            this._game._gameOver = true;
+            return true;
+            // this._game._gameOver = true;
         }
+        return false;
 
     }
 
