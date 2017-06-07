@@ -18,7 +18,8 @@ var Game = (function () {
             if (_this.collide() === true) {
                 _this._gameOver = true;
             }
-            _this.moveSurfer(_this._wind.windspeed, _this._wind.windDirection);
+            _this.bounceBoat();
+            _this.moveobjects(_this._wind.windspeed, _this._wind._windDirection);
             setTimeout(function () {
                 if (!_this._gameOver)
                     _this.loop();
@@ -38,12 +39,15 @@ var Game = (function () {
         this._wind.render();
         this._zboat.render();
     };
-    Game.prototype.moveSurfer = function (windspeed, winddirection) {
+    Game.prototype.moveobjects = function (windspeed, winddirection) {
         this._surfer.move(windspeed, winddirection);
         this._zboat.move(windspeed, winddirection);
     };
     Game.prototype.collide = function () {
-        return this._collision.checkCol();
+        return this._collision.checkGameOver();
+    };
+    Game.prototype.bounceBoat = function () {
+        this._collision.objectBounce();
     };
     Object.defineProperty(Game.prototype, "surfer", {
         get: function () {
@@ -82,7 +86,7 @@ var Obstacle = (function () {
         this._className = 'obstacle';
         this._baseUrl = './assets/images/obstacle/';
         this._xPos = 0;
-        this._yPos = 350;
+        this._yPos = 250;
         this._name = name;
         this._imageName = imageName;
         var game = document.querySelector('.container');
@@ -91,27 +95,23 @@ var Obstacle = (function () {
         game.appendChild(this._el);
     }
     Obstacle.prototype.move = function (windspeed, winddirection) {
+        console.log('winddirection' + winddirection);
         if (winddirection > 0 && winddirection < 90) {
             this._xPos += windspeed * 2;
             this._yPos += windspeed * 2;
-            this.lastDirection = winddirection;
         }
         else if (winddirection > 90 && winddirection < 180) {
             this._xPos += windspeed * 2;
             this._yPos -= windspeed * 2;
-            this.lastDirection = winddirection;
         }
         else if (winddirection > 180 && winddirection < 270) {
             this._xPos -= windspeed * 2;
             this._yPos -= windspeed * 2;
-            this.lastDirection = winddirection;
         }
         else if (winddirection > 270 && winddirection < 360) {
             this._xPos -= windspeed * 2;
             this._yPos += windspeed * 2;
-            this.lastDirection = winddirection;
         }
-        console.log('new lastdirection ' + this.lastDirection);
     };
     Obstacle.prototype.render = function () {
         this._el.style.bottom = this._yPos + 'px';
@@ -121,6 +121,26 @@ var Obstacle = (function () {
     Object.defineProperty(Obstacle.prototype, "el", {
         get: function () {
             return this._el;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Obstacle.prototype, "xPos", {
+        get: function () {
+            return this._xPos;
+        },
+        set: function (value) {
+            this._xPos = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Obstacle.prototype, "yPos", {
+        get: function () {
+            return this._yPos;
+        },
+        set: function (value) {
+            this._yPos = value;
         },
         enumerable: true,
         configurable: true
@@ -215,13 +235,6 @@ var wind = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(wind.prototype, "windDirection", {
-        get: function () {
-            return this._windDirection;
-        },
-        enumerable: true,
-        configurable: true
-    });
     return wind;
 }());
 var zboat = (function (_super) {
@@ -240,8 +253,7 @@ var Collision = (function () {
         this.boat1object = this._game.zboat;
         this._window = this._game.windowListener;
     }
-    Collision.prototype.checkCol = function () {
-        this.boatOutOfBounds();
+    Collision.prototype.checkGameOver = function () {
         if (this.boatSurferCollision() || this.surferOutOfBounds()) {
             var game = document.querySelector('.container');
             this._el.className = 'collisiontrue';
@@ -252,6 +264,9 @@ var Collision = (function () {
         }
         return false;
     };
+    Collision.prototype.objectBounce = function () {
+        this.boatOutOfBounds();
+    };
     Collision.prototype.boatSurferCollision = function () {
         if (this._surfer.offsetLeft + this._surfer.width >= this._boat1.offsetLeft && this._surfer.offsetLeft <= this._boat1.offsetLeft + this._boat1.width) {
             if (this._surfer.offsetTop + this._surfer.height >= this._boat1.offsetTop && this._surfer.offsetTop <= this._boat1.offsetTop + this._boat1.height) {
@@ -261,9 +276,22 @@ var Collision = (function () {
         return false;
     };
     Collision.prototype.boatOutOfBounds = function () {
-        console.log('boat gaat altijd voor debuggen weg');
-        console.log(this.boat1object.lastDirection);
-        this.boat1object.move(3, (this.boat1object.lastDirection / 2));
+        if (this._boat1.offsetLeft <= 0) {
+            console.log('boat gaat links weg');
+            this.boat1object.move(this._game._wind.windspeed, temp);
+        }
+        if ((this._boat1.offsetLeft + this._boat1.width + 15) >= this._window.windowWidth) {
+            console.log('boat gaat rechts weg');
+            this.boat1object.move(this._game._wind.windspeed, temp);
+        }
+        if (this._boat1.offsetTop <= 0) {
+            console.log('boat gaat boven weg');
+            this.boat1object.move(this._game._wind.windspeed, temp);
+        }
+        if ((this._boat1.offsetTop + this._boat1.height + 10) >= this._window.windowHeight) {
+            console.log('boat gaat onder weg');
+            this.boat1object.move(this._game._wind.windspeed, temp);
+        }
     };
     Collision.prototype.surferOutOfBounds = function () {
         if (this._surfer.offsetLeft <= 0) {

@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46165dd5-b74e-4a44-818c-c1bcdbc42a4a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js.map" afterPath="$PROJECT_DIR$/js/main.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts/game.ts" afterPath="$PROJECT_DIR$/ts/game.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts/listeners/collision.ts" afterPath="$PROJECT_DIR$/ts/listeners/collision.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts/listeners/keyboardlistener.ts" afterPath="$PROJECT_DIR$/ts/listeners/keyboardlistener.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts/obstacle.ts" afterPath="$PROJECT_DIR$/ts/obstacle.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts/wind.ts" afterPath="$PROJECT_DIR$/ts/wind.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts/zboat.ts" afterPath="$PROJECT_DIR$/ts/zboat.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,11 +27,9 @@
       <file leaf-file-name="obstacle.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ts/obstacle.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="44" column="63" lean-forward="true" selection-start-line="44" selection-start-column="63" selection-end-line="44" selection-end-column="63" />
-              <folding>
-                <element signature="n#!!doc;n#Obstacle#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -40,53 +37,9 @@
       <file leaf-file-name="keyboardlistener.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ts/listeners/keyboardlistener.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="21" column="46" lean-forward="true" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="276" column="9" lean-forward="true" selection-start-line="276" selection-start-column="9" selection-end-line="276" selection-end-column="9" />
-              <folding>
-                <marker date="1496836049000" expanded="true" signature="8111:10261" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="9540:9731" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="9789:10236" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="9833:9869" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="9963:9999" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="10041:10077" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="10172:10208" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="10297:12557" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="10326:11554" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="10590:11415" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="10629:10997" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="11033:11405" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="11617:11751" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="11644:11691" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="11812:11942" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="11839:11882" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="12005:12137" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="12032:12077" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="12201:12334" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="12228:12274" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="12397:12529" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="12424:12469" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="12596:13731" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="12628:12659" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="12718:13287" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="12752:13152" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="12816:12981" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="12999:13142" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="13166:13281" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="13357:13494" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="13384:13434" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="13564:13700" ph="{...}" />
-                <marker date="1496836049000" expanded="true" signature="13591:13640" ph="{...}" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -94,8 +47,8 @@
       <file leaf-file-name="collision.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ts/listeners/collision.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="57" column="52" lean-forward="true" selection-start-line="57" selection-start-column="52" selection-end-line="57" selection-end-column="52" />
+            <state relative-caret-position="146">
+              <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -104,8 +57,8 @@
       <file leaf-file-name="game.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ts/game.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1245">
-              <caret line="83" column="6" lean-forward="false" selection-start-line="83" selection-start-column="6" selection-end-line="83" selection-end-column="6" />
+            <state relative-caret-position="60">
+              <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -114,8 +67,8 @@
       <file leaf-file-name="wind.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ts/wind.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="10" />
+            <state relative-caret-position="90">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc;n#wind#0" expanded="false" />
               </folding>
@@ -149,7 +102,7 @@
         <entry file="file://$PROJECT_DIR$/ts/zboat.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="44">
-              <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+              <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -189,18 +142,21 @@
       <find>offset</find>
       <find>console.</find>
       <find>console</find>
-      <find>cons</find>
-      <find>_lastDirection</find>
       <find>_boat</find>
+      <find>_lastDirection</find>
+      <find>cons</find>
+      <find>wind</find>
+      <find>moveobjects</find>
+      <find>boatOutOfBounds</find>
     </findStrings>
     <replaceStrings>
       <replace />
       <replace>surfer</replace>
       <replace>Right</replace>
       <replace>this._surfer</replace>
+      <replace>_boat1</replace>
       <replace>this._boat1</replace>
       <replace>lastDirection</replace>
-      <replace>_boat1</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -215,13 +171,13 @@
         <option value="$PROJECT_DIR$/ts/boat" />
         <option value="$PROJECT_DIR$/ts/boat.ts" />
         <option value="$PROJECT_DIR$/js/main.js" />
-        <option value="$PROJECT_DIR$/ts/zboat.ts" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/assets/css/style.css" />
         <option value="$PROJECT_DIR$/ts/surfer.ts" />
         <option value="$PROJECT_DIR$/ts/listeners/keyboardlistener.ts" />
-        <option value="$PROJECT_DIR$/ts/game.ts" />
         <option value="$PROJECT_DIR$/ts/wind.ts" />
+        <option value="$PROJECT_DIR$/ts/game.ts" />
+        <option value="$PROJECT_DIR$/ts/zboat.ts" />
         <option value="$PROJECT_DIR$/ts/obstacle.ts" />
         <option value="$PROJECT_DIR$/ts/listeners/collision.ts" />
       </list>
@@ -235,7 +191,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="width" value="1920" />
-    <option name="height" value="1200" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -512,15 +468,16 @@
       <workItem from="1496315918508" duration="29000" />
       <workItem from="1496315962665" duration="3096000" />
       <workItem from="1496664889238" duration="15614000" />
-      <workItem from="1496758776943" duration="11408000" />
+      <workItem from="1496758776943" duration="20583000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69836000" />
+    <option name="totallyTimeSpent" value="79011000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1790416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -530,7 +487,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.118584074" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13267326" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -639,9 +596,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc;n#Obstacle#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -706,9 +661,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc;n#Obstacle#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -891,10 +844,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/style.css">
+    <entry file="file://$PROJECT_DIR$/ts/surfer.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="15">
+          <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -909,18 +862,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ts/surfer.ts">
+    <entry file="file://$PROJECT_DIR$/assets/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+        <state relative-caret-position="345">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="242" column="24" lean-forward="false" selection-start-line="242" selection-start-column="24" selection-end-line="242" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ts/game.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ts/wind.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="10" />
+        <state relative-caret-position="90">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc;n#wind#0" expanded="false" />
           </folding>
@@ -930,83 +899,31 @@
     <entry file="file://$PROJECT_DIR$/ts/zboat.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
-          <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ts/game.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="83" column="6" lean-forward="false" selection-start-line="83" selection-start-column="6" selection-end-line="83" selection-end-column="6" />
+          <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ts/obstacle.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="44" column="63" lean-forward="true" selection-start-line="44" selection-start-column="63" selection-end-line="44" selection-end-column="63" />
-          <folding>
-            <element signature="n#!!doc;n#Obstacle#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ts/listeners/keyboardlistener.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="21" column="46" lean-forward="true" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="276" column="9" lean-forward="true" selection-start-line="276" selection-start-column="9" selection-end-line="276" selection-end-column="9" />
-          <folding>
-            <marker date="1496836049000" expanded="true" signature="8111:10261" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="9540:9731" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="9789:10236" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="9833:9869" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="9963:9999" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="10041:10077" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="10172:10208" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="10297:12557" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="10326:11554" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="10590:11415" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="10629:10997" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="11033:11405" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="11617:11751" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="11644:11691" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="11812:11942" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="11839:11882" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="12005:12137" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="12032:12077" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="12201:12334" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="12228:12274" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="12397:12529" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="12424:12469" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="12596:13731" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="12628:12659" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="12718:13287" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="12752:13152" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="12816:12981" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="12999:13142" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="13166:13281" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="13357:13494" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="13384:13434" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="13564:13700" ph="{...}" />
-            <marker date="1496836049000" expanded="true" signature="13591:13640" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ts/listeners/collision.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="57" column="52" lean-forward="true" selection-start-line="57" selection-start-column="52" selection-end-line="57" selection-end-column="52" />
+        <state relative-caret-position="146">
+          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding />
         </state>
       </provider>

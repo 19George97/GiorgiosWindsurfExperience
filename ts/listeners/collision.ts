@@ -26,10 +26,7 @@ class Collision{
     /**
      * What to do if objects collide
      */
-    public checkCol(){
-
-        this.boatOutOfBounds();
-
+    public checkGameOver(){
         if(this.boatSurferCollision() || this.surferOutOfBounds()){
             const game = document.querySelector('.container');
             this._el.className = 'collisiontrue';
@@ -40,6 +37,10 @@ class Collision{
         }
 
         return false;
+    }
+
+    public objectBounce () {
+        this.boatOutOfBounds();
     }
 
     private boatSurferCollision(){
@@ -53,28 +54,27 @@ class Collision{
 
     private boatOutOfBounds(){
 
-        console.log('boat gaat altijd voor debuggen weg');
-        // console.log('windspeed is '+ this._game._wind.windspeed);
-        console.log(this.boat1object.lastDirection);
-        this.boat1object.move(3, (this.boat1object.lastDirection / 2));
+        // let temp = this.boat1object.lastDirection / 2;
 
+        // this.boat1object.
+        // console.log('new direction ' + temp);
 
-        // if(this._boat1.offsetLeft <= 0){
-        //     console.log('boat gaat links weg');
-        //     this.boat1object.move(this._game._wind.windspeed, (this._boat1.lastDirection / 2));
-        // }
-        // if((this._boat1.offsetLeft + this._boat1.width + 15) >= this._window.windowWidth){
-        //     console.log('boat gaat rechts weg');
-        //     this.boat1object.move(this._game._wind.windspeed, (this._boat1.lastDirection / 2));
-        // }
-        // if(this._boat1.offsetTop <= 0) {
-        //     console.log('boat gaat boven weg');
-        //     this.boat1object.move(this._game._wind.windspeed, (this._boat1.lastDirection / 2));
-        // }
-        // if((this._boat1.offsetTop + this._boat1.height + 10) >= this._window.windowHeight) {
-        //     console.log('boat gaat onder weg');
-        //     this.boat1object.move(this._game._wind.windspeed, (this._boat1.lastDirection / 2));
-        // }
+        if(this._boat1.offsetLeft <= 0){
+            console.log('boat gaat links weg');
+            this.boat1object.move(this._game._wind.windspeed, temp);
+        }
+        if((this._boat1.offsetLeft + this._boat1.width + 15) >= this._window.windowWidth){
+            console.log('boat gaat rechts weg');
+            this.boat1object.move(this._game._wind.windspeed, temp);
+        }
+        if(this._boat1.offsetTop <= 0) {
+            console.log('boat gaat boven weg');
+            this.boat1object.move(this._game._wind.windspeed, temp);
+        }
+        if((this._boat1.offsetTop + this._boat1.height + 10) >= this._window.windowHeight) {
+            console.log('boat gaat onder weg');
+            this.boat1object.move(this._game._wind.windspeed, temp);
+        }
     }
 
     private surferOutOfBounds(){

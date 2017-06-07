@@ -34,8 +34,8 @@ class Game{
     if(this.collide() === true){
       this._gameOver = true;
     }
-
-    this.moveSurfer(this._wind.windspeed, this._wind.windDirection);
+    this.bounceBoat();
+    this.moveobjects(this._wind.windspeed, this._wind._windDirection);
 
     setTimeout(() => {
       if(!this._gameOver) this.loop()
@@ -60,8 +60,10 @@ class Game{
   /**
    * Move all game objects
    */
-  public moveSurfer(windspeed : number, winddirection : number){
+  public moveobjects(windspeed : number, winddirection : number){
+
     this._surfer.move(windspeed, winddirection);
+
     this._zboat.move(windspeed, winddirection);
   }
 
@@ -69,7 +71,11 @@ class Game{
    * Check collision of different game objects
    */
   private collide(){
-    return this._collision.checkCol();
+    return this._collision.checkGameOver();
+  }
+
+  private bounceBoat(){
+    this._collision.objectBounce();
   }
 
   /**
@@ -84,6 +90,10 @@ class Game{
   get zboat(): zboat {
     return this._zboat;
   }
+
+  // get wind(): wind {
+  //   return this._wind;
+  // }
 
   /**
    * Get the windowListener

@@ -5,7 +5,7 @@ class wind {
     private _elSpeed : any = document.getElementById('windspeed');
     private _elDirection : any = document.getElementById('winddirection');
     public _windspeed : number;
-    private _windDirection : number;
+    public _windDirection : number;
 
     private _className: string = 'surfer';
     private _baseUrl: string = './assets/images/';
@@ -57,8 +57,8 @@ class wind {
         return this._windspeed;
     }
 
-
-    get windDirection(): number {
-        return this._windDirection;
-    }
+    //
+    // get windDirection(): number {
+    //     return this._windDirection;
+    // }
 }

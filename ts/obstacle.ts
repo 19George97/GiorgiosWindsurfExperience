@@ -8,9 +8,10 @@ class Obstacle {
     private _imageName: string;
     //private _xPos: number = 150;
     private _xPos: number = 0;
-    private _yPos: number = 350;
+    private _yPos: number = 250;
     public _name: string;
     public lastDirection: number;
+    private _game: Game;
 
 
     constructor(name: string, imageName: string) {
@@ -25,25 +26,29 @@ class Obstacle {
 
     public move(windspeed: number, winddirection: number) {
         // links of recht bewegen door de wind
+        console.log('winddirection' + winddirection);
+// console.log(this._game._wind._windDirection.);
         if(winddirection > 0 &&  winddirection < 90) {
             this._xPos += windspeed * 2;
             this._yPos += windspeed * 2;
-            this.lastDirection = winddirection;
+            // this._game._wind._windDirection = winddirection;
         } else if (winddirection > 90 && winddirection < 180){
             this._xPos += windspeed * 2;
             this._yPos -= windspeed * 2;
-            this.lastDirection = winddirection;
+            // this._game._wind._windDirection = winddirection;
         } else if (winddirection > 180 && winddirection < 270){
             this._xPos -= windspeed * 2;
             this._yPos -= windspeed * 2;
-            this.lastDirection = winddirection;
+            // this._game._wind._windDirection = winddirection;
         } else if (winddirection > 270 && winddirection < 360){
             this._xPos -= windspeed * 2;
             this._yPos += windspeed * 2;
-            this.lastDirection = winddirection;
+            // this._game._wind._windDirection = winddirection;
         }
-        console.log('new lastdirection ' + this.lastDirection);
+
     }
+
+
 
 
 
@@ -64,5 +69,21 @@ class Obstacle {
         return this._el;
     }
 
+
+    get xPos(): number {
+        return this._xPos;
+    }
+
+    set xPos(value: number) {
+        this._xPos = value;
+    }
+
+    get yPos(): number {
+        return this._yPos;
+    }
+
+    set yPos(value: number) {
+        this._yPos = value;
+    }
 }
 

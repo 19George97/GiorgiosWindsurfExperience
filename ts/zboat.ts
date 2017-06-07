@@ -6,4 +6,6 @@ constructor(){
     super('Belgen in boot', 'zeilboot.png');
 }
 
+
+//move hierheen
 }
