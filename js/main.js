@@ -18,8 +18,9 @@ var Game = (function () {
             if (_this.collide() === true) {
                 _this._gameOver = true;
             }
-            _this.bounceBoat();
-            _this.moveobjects(_this._wind.windspeed, _this._wind._windDirection);
+            _this.checkBoatBoundaries();
+            _this.moveSurfer(_this._wind.windspeed, _this._wind._windDirection);
+            _this.moveObstacle();
             setTimeout(function () {
                 if (!_this._gameOver)
                     _this.loop();
@@ -39,15 +40,17 @@ var Game = (function () {
         this._wind.render();
         this._zboat.render();
     };
-    Game.prototype.moveobjects = function (windspeed, winddirection) {
+    Game.prototype.moveSurfer = function (windspeed, winddirection) {
         this._surfer.move(windspeed, winddirection);
-        this._zboat.move(windspeed, winddirection);
+    };
+    Game.prototype.moveObstacle = function () {
+        this._zboat.move();
     };
     Game.prototype.collide = function () {
         return this._collision.checkGameOver();
     };
-    Game.prototype.bounceBoat = function () {
-        this._collision.objectBounce();
+    Game.prototype.checkBoatBoundaries = function () {
+        return this._collision.boatOutOfBounds();
     };
     Object.defineProperty(Game.prototype, "surfer", {
         get: function () {
@@ -81,66 +84,31 @@ var app = {};
     window.addEventListener('load', init);
 })();
 var Obstacle = (function () {
-    function Obstacle(name, imageName) {
+    function Obstacle(name, imageName, speed) {
+        if (speed === void 0) { speed = new Vector(5, 5); }
         this._el = document.createElement('img');
-        this._className = 'obstacle';
         this._baseUrl = './assets/images/obstacle/';
-        this._xPos = 0;
-        this._yPos = 250;
         this._name = name;
         this._imageName = imageName;
         var game = document.querySelector('.container');
         this._el.setAttribute('src', this._baseUrl + this._imageName);
         this._el.className = 'obstacle';
         game.appendChild(this._el);
+        var rect = this._el.getBoundingClientRect();
+        this.position = new Vector(0, 200);
+        this.speed = speed;
     }
-    Obstacle.prototype.move = function (windspeed, winddirection) {
-        console.log('winddirection' + winddirection);
-        if (winddirection > 0 && winddirection < 90) {
-            this._xPos += windspeed * 2;
-            this._yPos += windspeed * 2;
-        }
-        else if (winddirection > 90 && winddirection < 180) {
-            this._xPos += windspeed * 2;
-            this._yPos -= windspeed * 2;
-        }
-        else if (winddirection > 180 && winddirection < 270) {
-            this._xPos -= windspeed * 2;
-            this._yPos -= windspeed * 2;
-        }
-        else if (winddirection > 270 && winddirection < 360) {
-            this._xPos -= windspeed * 2;
-            this._yPos += windspeed * 2;
-        }
+    Obstacle.prototype.move = function () {
+        this.position = this.position.add(this.speed);
     };
     Obstacle.prototype.render = function () {
-        this._el.style.bottom = this._yPos + 'px';
-        this._el.style.left = this._xPos + 'px';
+        this._el.style.bottom = this.position.y() + 'px';
+        this._el.style.left = this.position.x() + 'px';
         this._el.style.zIndex = 1000;
     };
     Object.defineProperty(Obstacle.prototype, "el", {
         get: function () {
             return this._el;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Obstacle.prototype, "xPos", {
-        get: function () {
-            return this._xPos;
-        },
-        set: function (value) {
-            this._xPos = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Obstacle.prototype, "yPos", {
-        get: function () {
-            return this._yPos;
-        },
-        set: function (value) {
-            this._yPos = value;
         },
         enumerable: true,
         configurable: true
@@ -216,7 +184,7 @@ var wind = (function () {
         var speed = Math.round(Math.random() * 10);
         if (speed === 0)
             speed = 1;
-        return speed = 3;
+        return speed;
     };
     wind.prototype.generateWindDirection = function () {
         var degrees = Math.floor((Math.random() * 360) + 1);
@@ -240,7 +208,7 @@ var wind = (function () {
 var zboat = (function (_super) {
     __extends(zboat, _super);
     function zboat() {
-        return _super.call(this, 'Belgen in boot', 'zeilboot.png') || this;
+        return _super.call(this, 'Belgen in boot', 'zeilboot.png', new Vector(5, 5)) || this;
     }
     return zboat;
 }(Obstacle));
@@ -264,9 +232,6 @@ var Collision = (function () {
         }
         return false;
     };
-    Collision.prototype.objectBounce = function () {
-        this.boatOutOfBounds();
-    };
     Collision.prototype.boatSurferCollision = function () {
         if (this._surfer.offsetLeft + this._surfer.width >= this._boat1.offsetLeft && this._surfer.offsetLeft <= this._boat1.offsetLeft + this._boat1.width) {
             if (this._surfer.offsetTop + this._surfer.height >= this._boat1.offsetTop && this._surfer.offsetTop <= this._boat1.offsetTop + this._boat1.height) {
@@ -276,22 +241,26 @@ var Collision = (function () {
         return false;
     };
     Collision.prototype.boatOutOfBounds = function () {
+        var temp = 50;
+        var newspeed = this.boat1object.speed;
         if (this._boat1.offsetLeft <= 0) {
-            console.log('boat gaat links weg');
-            this.boat1object.move(this._game._wind.windspeed, temp);
+            console.log('boat krijgt een nieuwe vector, links weg');
+            newspeed = this.boat1object.speed.mirror_Y();
         }
         if ((this._boat1.offsetLeft + this._boat1.width + 15) >= this._window.windowWidth) {
-            console.log('boat gaat rechts weg');
-            this.boat1object.move(this._game._wind.windspeed, temp);
+            console.log('boat krijgt een nieuwe vector, rechts weg');
+            newspeed = this.boat1object.speed.mirror_Y();
         }
         if (this._boat1.offsetTop <= 0) {
-            console.log('boat gaat boven weg');
-            this.boat1object.move(this._game._wind.windspeed, temp);
+            console.log('boat krijgt een nieuwe vector, boven weg');
+            newspeed = this.boat1object.speed.mirror_X();
         }
         if ((this._boat1.offsetTop + this._boat1.height + 10) >= this._window.windowHeight) {
-            console.log('boat gaat onder weg');
-            this.boat1object.move(this._game._wind.windspeed, temp);
+            console.log('boat krijgt een nieuwe vector, onder weg');
+            newspeed = this.boat1object.speed.mirror_X();
         }
+        this.boat1object.speed = newspeed;
+        return null;
     };
     Collision.prototype.surferOutOfBounds = function () {
         if (this._surfer.offsetLeft <= 0) {
@@ -379,6 +348,54 @@ var KeyListener = (function () {
         configurable: true
     });
     return KeyListener;
+}());
+var Vector = (function () {
+    function Vector(x, y) {
+        if (x === void 0) { x = 0; }
+        if (y === void 0) { y = 0; }
+        this._size = null;
+        this._angle = null;
+        this._x = x;
+        this._y = y;
+    }
+    Vector.prototype.x = function () {
+        return this._x;
+    };
+    Vector.prototype.y = function () {
+        return this._y;
+    };
+    Vector.prototype.size = function () {
+        if (!this._size) {
+            this._size = Math.sqrt(Math.pow(this._x, 2) +
+                Math.pow(this._y, 2));
+        }
+        return this._size;
+    };
+    Vector.prototype.angle = function () {
+        if (!this._angle) {
+            this._size = Math.atan(this._y / this._x);
+        }
+        return this._angle;
+    };
+    Vector.prototype.add = function (input) {
+        return new Vector(this._x + input.x(), this._y + input.y());
+    };
+    Vector.prototype.subtract = function (input) {
+        return new Vector(this._x - input.x(), this._y - input.y());
+    };
+    Vector.prototype.distance = function (input) {
+        return this.subtract(input).size();
+    };
+    Vector.prototype.scale = function (scalar) {
+        return new Vector(this._x * scalar, this._y * scalar);
+    };
+    Vector.prototype.mirror_X = function () {
+        return new Vector(this._x, this._y * -1);
+    };
+    Vector.prototype.mirror_Y = function () {
+        return new Vector(this._x * -1, this._y);
+    };
+    return Vector;
 }());
 var WindowListener = (function () {
     function WindowListener() {

@@ -39,9 +39,9 @@ class Collision{
         return false;
     }
 
-    public objectBounce () {
-        this.boatOutOfBounds();
-    }
+    // public checkBoatBoundaries() {
+    //     return this.boatOutOfBounds();
+    // }
 
     private boatSurferCollision(){
         if(this._surfer.offsetLeft + this._surfer.width >= this._boat1.offsetLeft && this._surfer.offsetLeft <= this._boat1.offsetLeft + this._boat1.width){
@@ -52,29 +52,39 @@ class Collision{
         return false;
     }
 
-    private boatOutOfBounds(){
+    public boatOutOfBounds(){
 
-        // let temp = this.boat1object.lastDirection / 2;
+        let temp = 50;
+        let newspeed = this.boat1object.speed;
 
         // this.boat1object.
         // console.log('new direction ' + temp);
+        // console.log(this._boat1.offsetTop);
 
         if(this._boat1.offsetLeft <= 0){
-            console.log('boat gaat links weg');
-            this.boat1object.move(this._game._wind.windspeed, temp);
+            console.log('boat krijgt een nieuwe vector, links weg');
+            newspeed =  this.boat1object.speed.mirror_Y();
+
         }
         if((this._boat1.offsetLeft + this._boat1.width + 15) >= this._window.windowWidth){
-            console.log('boat gaat rechts weg');
-            this.boat1object.move(this._game._wind.windspeed, temp);
+            console.log('boat krijgt een nieuwe vector, rechts weg');
+            newspeed =   this.boat1object.speed.mirror_Y();
         }
         if(this._boat1.offsetTop <= 0) {
-            console.log('boat gaat boven weg');
-            this.boat1object.move(this._game._wind.windspeed, temp);
+            console.log('boat krijgt een nieuwe vector, boven weg');
+
+            newspeed =  this.boat1object.speed.mirror_X();
+
+
+
         }
         if((this._boat1.offsetTop + this._boat1.height + 10) >= this._window.windowHeight) {
-            console.log('boat gaat onder weg');
-            this.boat1object.move(this._game._wind.windspeed, temp);
+            console.log('boat krijgt een nieuwe vector, onder weg');
+            newspeed =  this.boat1object.speed.mirror_X();
         }
+        this.boat1object.speed = newspeed;
+
+        return null;
     }
 
     private surferOutOfBounds(){

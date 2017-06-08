@@ -3,7 +3,7 @@
 class zboat extends Obstacle {
 
 constructor(){
-    super('Belgen in boot', 'zeilboot.png');
+    super('Belgen in boot', 'zeilboot.png', new Vector(5,5));
 }
 
 

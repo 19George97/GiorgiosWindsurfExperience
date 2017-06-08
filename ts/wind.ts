@@ -33,7 +33,7 @@ class wind {
         if(speed === 0)
             speed = 1;
 
-        return speed = 3;
+        return speed;
     }
 
     private generateWindDirection(){

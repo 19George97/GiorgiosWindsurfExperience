@@ -34,8 +34,18 @@ class Game{
     if(this.collide() === true){
       this._gameOver = true;
     }
-    this.bounceBoat();
-    this.moveobjects(this._wind.windspeed, this._wind._windDirection);
+    this.checkBoatBoundaries();
+    //
+    // if (displacement == null){
+    //   console.log('dispis null');
+    //   displacement = new Vector(5,5);
+    // }
+    // console.log('disp is ' + displacement.y() + '    ' + displacement.x());
+    this.moveSurfer(this._wind.windspeed, this._wind._windDirection);
+    // console.log(displacement.x() + displacement.y());
+    this.moveObstacle();
+
+
 
     setTimeout(() => {
       if(!this._gameOver) this.loop()
@@ -60,11 +70,17 @@ class Game{
   /**
    * Move all game objects
    */
-  public moveobjects(windspeed : number, winddirection : number){
+  public moveSurfer(windspeed : number, winddirection : number){
 
     this._surfer.move(windspeed, winddirection);
 
-    this._zboat.move(windspeed, winddirection);
+    // this._zboat.move(windspeed, winddirection);
+
+  }
+
+  public moveObstacle(){
+    // console.log(direction);
+    this._zboat.move();
   }
 
   /**
@@ -74,8 +90,8 @@ class Game{
     return this._collision.checkGameOver();
   }
 
-  private bounceBoat(){
-    this._collision.objectBounce();
+  private checkBoatBoundaries(){
+    return this._collision.boatOutOfBounds();
   }
 
   /**
