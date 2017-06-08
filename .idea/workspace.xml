@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46165dd5-b74e-4a44-818c-c1bcdbc42a4a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js.map" afterPath="$PROJECT_DIR$/js/main.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts/game.ts" afterPath="$PROJECT_DIR$/ts/game.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts/listeners/collision.ts" afterPath="$PROJECT_DIR$/ts/listeners/collision.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts/zboat.ts" afterPath="$PROJECT_DIR$/ts/zboat.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts/listeners/keyboardlistener.ts" afterPath="$PROJECT_DIR$/ts/listeners/keyboardlistener.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ts/obstacle.ts" afterPath="$PROJECT_DIR$/ts/obstacle.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,14 +20,14 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.63566387">
+    <splitter split-orientation="horizontal" split-proportion="0.5155345">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="keyboardlistener.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ts/listeners/keyboardlistener.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="404">
-                  <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+                <state relative-caret-position="690">
+                  <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -43,21 +43,12 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="collision.ts" pinned="false" current-in-tab="true">
+          <file leaf-file-name="collision.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ts/listeners/collision.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="457">
-                  <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
-                  <folding>
-                    <marker date="1496914472000" expanded="true" signature="53:3604" ph="{...}" />
-                    <marker date="1496914472000" expanded="true" signature="1895:3128" ph="{...}" />
-                    <marker date="1496914472000" expanded="true" signature="1943:3122" ph="{...}" />
-                    <marker date="1496914472000" expanded="true" signature="3161:3602" ph="{...}" />
-                    <marker date="1496914472000" expanded="true" signature="3203:3239" ph="{...}" />
-                    <marker date="1496914472000" expanded="true" signature="3331:3367" ph="{...}" />
-                    <marker date="1496914472000" expanded="true" signature="3408:3444" ph="{...}" />
-                    <marker date="1496914472000" expanded="true" signature="3538:3574" ph="{...}" />
-                  </folding>
+                <state relative-caret-position="559">
+                  <caret line="76" column="41" lean-forward="true" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="41" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -82,11 +73,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="obstacle.ts" pinned="false" current-in-tab="false">
+          <file leaf-file-name="obstacle.ts" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ts/obstacle.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="495">
-                  <caret line="33" column="54" lean-forward="true" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+                <state relative-caret-position="450">
+                  <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -99,8 +90,8 @@
           <file leaf-file-name="game.ts" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ts/game.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
-                  <caret line="56" column="54" lean-forward="true" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+                <state relative-caret-position="30">
+                  <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="8" />
                   <folding />
                 </state>
               </provider>
@@ -141,7 +132,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>s</find>
       <find>plane</find>
       <find>conso</find>
       <find>keyUpDownHandler</find>
@@ -171,6 +161,7 @@
       <find>checkBoatBoundaries</find>
       <find>boatOutOfBounds</find>
       <find>speed</find>
+      <find>[i]</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -180,6 +171,7 @@
       <replace>_boat1</replace>
       <replace>this._boat1</replace>
       <replace>lastDirection</replace>
+      <replace>[index]</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -196,15 +188,15 @@
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/assets/css/style.css" />
-        <option value="$PROJECT_DIR$/ts/listeners/keyboardlistener.ts" />
         <option value="$PROJECT_DIR$/ts/listeners/vector.ts" />
-        <option value="$PROJECT_DIR$/ts/obstacle.ts" />
         <option value="$PROJECT_DIR$/ts/wind.ts" />
         <option value="$PROJECT_DIR$/ts/surfer.ts" />
         <option value="$PROJECT_DIR$/ts/zboat.ts" />
         <option value="$PROJECT_DIR$/ts/shark.ts" />
         <option value="$PROJECT_DIR$/ts/listeners/collision.ts" />
         <option value="$PROJECT_DIR$/ts/game.ts" />
+        <option value="$PROJECT_DIR$/ts/listeners/keyboardlistener.ts" />
+        <option value="$PROJECT_DIR$/ts/obstacle.ts" />
       </list>
     </option>
   </component>
@@ -493,12 +485,12 @@
       <workItem from="1496315918508" duration="29000" />
       <workItem from="1496315962665" duration="3096000" />
       <workItem from="1496664889238" duration="15614000" />
-      <workItem from="1496758776943" duration="35980000" />
+      <workItem from="1496758776943" duration="36666000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94408000" />
+    <option name="totallyTimeSpent" value="95094000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="6" />
@@ -897,34 +889,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ts/obstacle.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="54" lean-forward="true" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ts/zboat.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ts/listeners/keyboardlistener.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ts/listeners/vector.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -939,25 +907,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ts/listeners/collision.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
-          <folding>
-            <marker date="1496914472000" expanded="true" signature="53:3604" ph="{...}" />
-            <marker date="1496914472000" expanded="true" signature="1895:3128" ph="{...}" />
-            <marker date="1496914472000" expanded="true" signature="1943:3122" ph="{...}" />
-            <marker date="1496914472000" expanded="true" signature="3161:3602" ph="{...}" />
-            <marker date="1496914472000" expanded="true" signature="3203:3239" ph="{...}" />
-            <marker date="1496914472000" expanded="true" signature="3331:3367" ph="{...}" />
-            <marker date="1496914472000" expanded="true" signature="3408:3444" ph="{...}" />
-            <marker date="1496914472000" expanded="true" signature="3538:3574" ph="{...}" />
-          </folding>
+        <state relative-caret-position="559">
+          <caret line="76" column="41" lean-forward="true" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ts/listeners/keyboardlistener.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ts/listeners/vector.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ts/game.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="56" column="54" lean-forward="true" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+        <state relative-caret-position="30">
+          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ts/obstacle.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>

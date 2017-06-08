@@ -22,8 +22,6 @@ class KeyListener
      * @param {KeyboardEvent} e - event object
      */
     private keyUpDownHandler = (e : KeyboardEvent) => {
-
-
         if(e.type == 'keydown'){
             if (e.key == 'ArrowLeft') this._keyLeft = true;
             else if (e.key == 'ArrowUp') this._keyUp = true;
@@ -37,7 +35,6 @@ class KeyListener
             else if (e.key == 'ArrowRight') this._keyRight = false;
             else if (e.key == 'ArrowDown') this._keyDown = false;
         }
-
     };
 
     /**
@@ -47,7 +44,6 @@ class KeyListener
     get keyevents(): any{
         return this._keyevents;
     }
-
 
     get keyUp(): any {
         return this._keyUp;

@@ -6,12 +6,11 @@ class Obstacle {
     private _baseUrl: string = './assets/images/obstacle/';
     private _imageName: string;
     public _name: string;
-
     position: Vector;
     speed: Vector;
 
 
-    constructor(name: string, imageName: string, speed = new Vector(5,5)) {
+    constructor(name: string, imageName: string, speed: Vector) {
         this._name = name;
         this._imageName = imageName;
         const game = document.querySelector('.container');
@@ -22,7 +21,8 @@ class Obstacle {
         // this.html = this._el;
         let rect = this._el.getBoundingClientRect();
         // console.log(rect);
-        this.position = new Vector(0, 200);
+        console.log(game.clientWidth);
+        this.position = new Vector(Math.floor(Math.random() * game.clientWidth), Math.floor(Math.random() * game.clientHeight));
         this.speed = speed;
     }
 

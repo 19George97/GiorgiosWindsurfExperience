@@ -101,7 +101,6 @@ var app = {};
 })();
 var Obstacle = (function () {
     function Obstacle(name, imageName, speed) {
-        if (speed === void 0) { speed = new Vector(5, 5); }
         this._el = document.createElement('img');
         this._baseUrl = './assets/images/obstacle/';
         this._name = name;
@@ -111,7 +110,8 @@ var Obstacle = (function () {
         this._el.className = 'obstacle';
         game.appendChild(this._el);
         var rect = this._el.getBoundingClientRect();
-        this.position = new Vector(0, 200);
+        console.log(game.clientWidth);
+        this.position = new Vector(Math.floor(Math.random() * game.clientWidth), Math.floor(Math.random() * game.clientHeight));
         this.speed = speed;
     }
     Obstacle.prototype.move = function () {
