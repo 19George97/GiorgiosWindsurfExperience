@@ -5,8 +5,8 @@ class Collision{
     private _el: any = document.createElement('div');
     private _window: any;
     private _surfer: any;
-    public _boat1: any;
-    private boat1object: zboat;
+    // public _boat1: any;
+    // private boat1object: zboat;
 
 
     /**
@@ -16,8 +16,8 @@ class Collision{
     constructor(game: Game){
         this._game = game;
         this._surfer = this._game.surfer._el;
-        this._boat1 = this._game.zboat._el;
-        this.boat1object = this._game.zboat;
+        // this._boat1 = this._game.zboat._el;
+        // this.boat1object = this._game.zboat;
         this._window = this._game.windowListener;
     }
 
@@ -25,7 +25,7 @@ class Collision{
      * What to do if objects collide
      */
     public checkGameOver(){
-        if(this.boatSurferCollision() || this.surferOutOfBounds()){
+        if(this.obstacleSurferCollision() || this.surferOutOfBounds()){
             const game = document.querySelector('.container');
             this._el.className = 'collisiontrue';
             this._el.innerText = 'YOU FAILED';
@@ -36,35 +36,41 @@ class Collision{
         return false;
     }
 
-    private boatSurferCollision(){
-        if(this._surfer.offsetLeft + this._surfer.width >= this._boat1.offsetLeft && this._surfer.offsetLeft <= this._boat1.offsetLeft + this._boat1.width){
-            if (this._surfer.offsetTop + this._surfer.height >= this._boat1.offsetTop && this._surfer.offsetTop <= this._boat1.offsetTop + this._boat1.height){
-                return true;
+    private obstacleSurferCollision(){
+        
+        for(let index in this._game.obstacles){
+            if (this._surfer.offsetLeft + this._surfer.width >= this._game.obstacles[index]._el.offsetLeft && this._surfer.offsetLeft <= this._game.obstacles[index]._el.offsetLeft + this._game.obstacles[index]._el.width) {
+                if (this._surfer.offsetTop + this._surfer.height >= this._game.obstacles[index]._el.offsetTop && this._surfer.offsetTop <= this._game.obstacles[index]._el.offsetTop + this._game.obstacles[index]._el.height) {
+                    return true;
+                }
             }
         }
         return false;
     }
 
-    public boatOutOfBounds(){
-        let newspeed = this.boat1object.speed;
 
-        if(this._boat1.offsetLeft <= 0){
-            console.log('boat krijgt een nieuwe vector, links weg');
-            newspeed =  this.boat1object.speed.mirror_Y();
+    public boatOutOfBounds(){
+        for(let index in this._game.obstacles){
+            let newspeed = this._game.obstacles[index].speed;
+
+            if(this._game.obstacles[index]._el.offsetLeft <= 0){
+                console.log('boat krijgt een nieuwe vector, links weg');
+                newspeed =  this._game.obstacles[index].speed.mirror_Y();
+            }
+            if((this._game.obstacles[index]._el.offsetLeft + this._game.obstacles[index]._el.width + 15) >= this._window.windowWidth){
+                console.log('boat krijgt een nieuwe vector, rechts weg');
+                newspeed =  this._game.obstacles[index].speed.mirror_Y();
+            }
+            if(this._game.obstacles[index]._el.offsetTop <= 0) {
+                console.log('boat krijgt een nieuwe vector, boven weg');
+                newspeed =  this._game.obstacles[index].speed.mirror_X();
+            }
+            if((this._game.obstacles[index]._el.offsetTop + this._game.obstacles[index]._el.height + 10) >= this._window.windowHeight) {
+                console.log('boat krijgt een nieuwe vector, onder weg');
+                newspeed =  this._game.obstacles[index].speed.mirror_X();
+            }
+            this._game.obstacles[index].speed = newspeed;
         }
-        if((this._boat1.offsetLeft + this._boat1.width + 15) >= this._window.windowWidth){
-            console.log('boat krijgt een nieuwe vector, rechts weg');
-            newspeed =   this.boat1object.speed.mirror_Y();
-        }
-        if(this._boat1.offsetTop <= 0) {
-            console.log('boat krijgt een nieuwe vector, boven weg');
-            newspeed =  this.boat1object.speed.mirror_X();
-        }
-        if((this._boat1.offsetTop + this._boat1.height + 10) >= this._window.windowHeight) {
-            console.log('boat krijgt een nieuwe vector, onder weg');
-            newspeed =  this.boat1object.speed.mirror_X();
-        }
-        this.boat1object.speed = newspeed;
     }
 
     private surferOutOfBounds(){

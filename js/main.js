@@ -28,24 +28,39 @@ var Game = (function () {
         };
         this._surfer = new surfer('windsurfert.png');
         this._wind = new wind('direction.png');
-        this._zboat = new zboat();
         this._windowListener = new WindowListener();
         this._collision = new Collision(this);
+        this._obstacles = this.createObstacles();
     }
     Game.prototype.start = function () {
         this.loop();
     };
+    Game.prototype.createObstacles = function () {
+        return this._obstacles = [
+            new zboat('Belgen in boot', 'zeilboot.png', new Vector(-1, 3)),
+            new zboat('Duitsers in boot', 'zeilboot.png', new Vector(-2, 1)),
+            new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 2)),
+            new zboat('Belgen in boot', 'zeilboot.png', new Vector(-4, 2)),
+            new shark('Shark', 'fin.png', new Vector(1, -3)),
+            new shark('Shark', 'fin.png', new Vector(1, -3)),
+            new shark('Shark', 'fin.png', new Vector(-2, -1)),
+            new shark('Shark', 'fin.png', new Vector(-2, -2))
+        ];
+    };
     Game.prototype.render = function () {
         this._surfer.render();
         this._wind.render();
-        this._zboat.render();
+        for (var i = 0; i < this.obstacles.length; i++) {
+            this.obstacles[i].render();
+        }
     };
     Game.prototype.moveSurfer = function (windspeed, winddirection) {
-        console.log(windspeed + winddirection);
         this._surfer.move(windspeed, winddirection);
     };
     Game.prototype.moveObstacle = function () {
-        this._zboat.move();
+        for (var i = 0; i < this.obstacles.length; i++) {
+            this.obstacles[i].move();
+        }
     };
     Game.prototype.collide = function () {
         return this._collision.checkGameOver();
@@ -60,9 +75,9 @@ var Game = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Game.prototype, "zboat", {
+    Object.defineProperty(Game.prototype, "obstacles", {
         get: function () {
-            return this._zboat;
+            return this._obstacles;
         },
         enumerable: true,
         configurable: true
@@ -116,6 +131,13 @@ var Obstacle = (function () {
     });
     return Obstacle;
 }());
+var shark = (function (_super) {
+    __extends(shark, _super);
+    function shark(name, image, vector) {
+        return _super.call(this, name, image, vector) || this;
+    }
+    return shark;
+}(Obstacle));
 var surfer = (function () {
     function surfer(img) {
         this._el = document.createElement('img');
@@ -223,8 +245,8 @@ var wind = (function () {
 }());
 var zboat = (function (_super) {
     __extends(zboat, _super);
-    function zboat() {
-        return _super.call(this, 'Belgen in boot', 'zeilboot.png', new Vector(5, 5)) || this;
+    function zboat(name, image, vector) {
+        return _super.call(this, 'Belgen in boot', 'zeilboot.png', vector) || this;
     }
     return zboat;
 }(Obstacle));
@@ -233,12 +255,10 @@ var Collision = (function () {
         this._el = document.createElement('div');
         this._game = game;
         this._surfer = this._game.surfer._el;
-        this._boat1 = this._game.zboat._el;
-        this.boat1object = this._game.zboat;
         this._window = this._game.windowListener;
     }
     Collision.prototype.checkGameOver = function () {
-        if (this.boatSurferCollision() || this.surferOutOfBounds()) {
+        if (this.obstacleSurferCollision() || this.surferOutOfBounds()) {
             var game = document.querySelector('.container');
             this._el.className = 'collisiontrue';
             this._el.innerText = 'YOU FAILED';
@@ -248,33 +268,37 @@ var Collision = (function () {
         }
         return false;
     };
-    Collision.prototype.boatSurferCollision = function () {
-        if (this._surfer.offsetLeft + this._surfer.width >= this._boat1.offsetLeft && this._surfer.offsetLeft <= this._boat1.offsetLeft + this._boat1.width) {
-            if (this._surfer.offsetTop + this._surfer.height >= this._boat1.offsetTop && this._surfer.offsetTop <= this._boat1.offsetTop + this._boat1.height) {
-                return true;
+    Collision.prototype.obstacleSurferCollision = function () {
+        for (var index in this._game.obstacles) {
+            if (this._surfer.offsetLeft + this._surfer.width >= this._game.obstacles[index]._el.offsetLeft && this._surfer.offsetLeft <= this._game.obstacles[index]._el.offsetLeft + this._game.obstacles[index]._el.width) {
+                if (this._surfer.offsetTop + this._surfer.height >= this._game.obstacles[index]._el.offsetTop && this._surfer.offsetTop <= this._game.obstacles[index]._el.offsetTop + this._game.obstacles[index]._el.height) {
+                    return true;
+                }
             }
         }
         return false;
     };
     Collision.prototype.boatOutOfBounds = function () {
-        var newspeed = this.boat1object.speed;
-        if (this._boat1.offsetLeft <= 0) {
-            console.log('boat krijgt een nieuwe vector, links weg');
-            newspeed = this.boat1object.speed.mirror_Y();
+        for (var index in this._game.obstacles) {
+            var newspeed = this._game.obstacles[index].speed;
+            if (this._game.obstacles[index]._el.offsetLeft <= 0) {
+                console.log('boat krijgt een nieuwe vector, links weg');
+                newspeed = this._game.obstacles[index].speed.mirror_Y();
+            }
+            if ((this._game.obstacles[index]._el.offsetLeft + this._game.obstacles[index]._el.width + 15) >= this._window.windowWidth) {
+                console.log('boat krijgt een nieuwe vector, rechts weg');
+                newspeed = this._game.obstacles[index].speed.mirror_Y();
+            }
+            if (this._game.obstacles[index]._el.offsetTop <= 0) {
+                console.log('boat krijgt een nieuwe vector, boven weg');
+                newspeed = this._game.obstacles[index].speed.mirror_X();
+            }
+            if ((this._game.obstacles[index]._el.offsetTop + this._game.obstacles[index]._el.height + 10) >= this._window.windowHeight) {
+                console.log('boat krijgt een nieuwe vector, onder weg');
+                newspeed = this._game.obstacles[index].speed.mirror_X();
+            }
+            this._game.obstacles[index].speed = newspeed;
         }
-        if ((this._boat1.offsetLeft + this._boat1.width + 15) >= this._window.windowWidth) {
-            console.log('boat krijgt een nieuwe vector, rechts weg');
-            newspeed = this.boat1object.speed.mirror_Y();
-        }
-        if (this._boat1.offsetTop <= 0) {
-            console.log('boat krijgt een nieuwe vector, boven weg');
-            newspeed = this.boat1object.speed.mirror_X();
-        }
-        if ((this._boat1.offsetTop + this._boat1.height + 10) >= this._window.windowHeight) {
-            console.log('boat krijgt een nieuwe vector, onder weg');
-            newspeed = this.boat1object.speed.mirror_X();
-        }
-        this.boat1object.speed = newspeed;
     };
     Collision.prototype.surferOutOfBounds = function () {
         if (this._surfer.offsetLeft <= 0) {
