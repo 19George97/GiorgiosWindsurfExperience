@@ -41,6 +41,7 @@ var Game = (function () {
         this._zboat.render();
     };
     Game.prototype.moveSurfer = function (windspeed, winddirection) {
+        console.log(windspeed + winddirection);
         this._surfer.move(windspeed, winddirection);
     };
     Game.prototype.moveObstacle = function () {
@@ -120,7 +121,7 @@ var surfer = (function () {
         this._el = document.createElement('img');
         this._className = 'surfer';
         this._baseUrl = './assets/images/';
-        this._xPos = 150;
+        this._xPos = 700;
         this._yPos = 400;
         this._imageName = img;
         var game = document.querySelector('.container');
@@ -132,21 +133,37 @@ var surfer = (function () {
     surfer.prototype.move = function (windspeed, winddirection) {
         var currentMovement = this._keyboardListener.keyevents;
         var button = this._keyboardListener;
+        if (winddirection > 0 && winddirection < 90) {
+            this._xPos += windspeed;
+            this._yPos += windspeed;
+        }
+        else if (winddirection > 90 && winddirection < 180) {
+            this._xPos += windspeed;
+            this._yPos -= windspeed;
+        }
+        else if (winddirection > 180 && winddirection < 270) {
+            this._xPos -= windspeed;
+            this._yPos -= windspeed;
+        }
+        else if (winddirection > 270 && winddirection < 360) {
+            this._xPos -= windspeed;
+            this._yPos += windspeed;
+        }
         if (button.keyRight) {
             this._el.classList = 'surfer surferright';
-            this._xPos += 7;
+            this._xPos += 10;
         }
         if (button.keyLeft) {
             this._el.classList = 'surfer surferleft';
-            this._xPos -= 7;
+            this._xPos -= 10;
         }
         if (button.keyUp) {
             this._el.classList = 'surfer';
-            this._yPos += 5;
+            this._yPos += 10;
         }
         if (button.keyDown) {
             this._el.classList = 'surfer surferdown';
-            this._yPos -= 5;
+            this._yPos -= 10;
         }
     };
     surfer.prototype.render = function () {
@@ -167,7 +184,6 @@ var wind = (function () {
     function wind(img) {
         this._elSpeed = document.getElementById('windspeed');
         this._elDirection = document.getElementById('winddirection');
-        this._className = 'surfer';
         this._baseUrl = './assets/images/';
         this._el = document.createElement('img');
         this._windspeed = this.generateWindspeed();
@@ -241,7 +257,6 @@ var Collision = (function () {
         return false;
     };
     Collision.prototype.boatOutOfBounds = function () {
-        var temp = 50;
         var newspeed = this.boat1object.speed;
         if (this._boat1.offsetLeft <= 0) {
             console.log('boat krijgt een nieuwe vector, links weg');
@@ -260,7 +275,6 @@ var Collision = (function () {
             newspeed = this.boat1object.speed.mirror_X();
         }
         this.boat1object.speed = newspeed;
-        return null;
     };
     Collision.prototype.surferOutOfBounds = function () {
         if (this._surfer.offsetLeft <= 0) {

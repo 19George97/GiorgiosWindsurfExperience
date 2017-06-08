@@ -7,10 +7,10 @@ class wind {
     public _windspeed : number;
     public _windDirection : number;
 
-    private _className: string = 'surfer';
     private _baseUrl: string = './assets/images/';
     private _imageName: string;
     private _el: any = document.createElement('img');
+
 
 
     constructor(img : string) {
@@ -18,7 +18,6 @@ class wind {
         this._elSpeed.innerText = this._windspeed;
         this._windDirection = this.generateWindDirection();
         this._elDirection.innerText = this._windDirection;
-
         this._imageName = img;
         const divwindarrow = document.querySelector('#windarrow');
         this._el.setAttribute('src', this._baseUrl + this._imageName);
@@ -29,20 +28,13 @@ class wind {
 
     private generateWindspeed(){
         let speed = Math.round(Math.random() * 10);
-
         if(speed === 0)
             speed = 1;
-
         return speed;
     }
 
     private generateWindDirection(){
         let degrees = Math.floor((Math.random() * 360) + 1);
-
-        // let css = document.createElement("style");
-        // css.type = "text/css";
-        // css.innerHTML = "strong { color: red }";
-        // document.body.appendChild(css);
         return degrees;
     }
 
@@ -56,9 +48,4 @@ class wind {
     get windspeed(): number {
         return this._windspeed;
     }
-
-    //
-    // get windDirection(): number {
-    //     return this._windDirection;
-    // }
 }

@@ -35,29 +35,14 @@ class Game{
       this._gameOver = true;
     }
     this.checkBoatBoundaries();
-    //
-    // if (displacement == null){
-    //   console.log('dispis null');
-    //   displacement = new Vector(5,5);
-    // }
-    // console.log('disp is ' + displacement.y() + '    ' + displacement.x());
     this.moveSurfer(this._wind.windspeed, this._wind._windDirection);
-    // console.log(displacement.x() + displacement.y());
     this.moveObstacle();
-
-
-
     setTimeout(() => {
       if(!this._gameOver) this.loop()
     }, 1000/60
     );
-
   };
 
-  //
-  // public wind(){
-  //   this._wind.generateWindspeed();
-  // }
   /**
    * Render the game objects
    */
@@ -71,15 +56,11 @@ class Game{
    * Move all game objects
    */
   public moveSurfer(windspeed : number, winddirection : number){
-
+    console.log(windspeed+winddirection);
     this._surfer.move(windspeed, winddirection);
-
-    // this._zboat.move(windspeed, winddirection);
-
   }
 
   public moveObstacle(){
-    // console.log(direction);
     this._zboat.move();
   }
 
@@ -106,10 +87,6 @@ class Game{
   get zboat(): zboat {
     return this._zboat;
   }
-
-  // get wind(): wind {
-  //   return this._wind;
-  // }
 
   /**
    * Get the windowListener

@@ -4,9 +4,13 @@ class surfer {
   private _className: string = 'surfer';
   private _baseUrl: string = './assets/images/'
   private _imageName: string;
-  private _xPos: number = 150;
+  private _xPos: number = 700;
   private _yPos: number = 400;
   private _keyboardListener: KeyListener;
+
+  position: Vector;
+  speed: Vector;
+
 
   /**
    * Create a plane
@@ -29,41 +33,36 @@ class surfer {
     const currentMovement = this._keyboardListener.keyevents; //could be loosely coupled by pubsub system
     const button = this._keyboardListener; //could be loosely coupled by pubsub system
 
-
     // links of recht bewegen door de wind
-    // if(winddirection > 0 &&  winddirection < 90) {
-    //   this._xPos += windspeed;
-    //   this._yPos += windspeed;
-    // } else if (winddirection > 90 && winddirection < 180){
-    //   this._xPos += windspeed;
-    //   this._yPos -= windspeed;
-    // } else if (winddirection > 180 && winddirection < 270){
-    //   this._xPos -= windspeed;
-    //   this._yPos -= windspeed;
-    // } else if (winddirection > 270 && winddirection < 360){
-    //   this._xPos -= windspeed;
-    //   this._yPos += windspeed;
-    // }
+    if(winddirection > 0 &&  winddirection < 90) {
+      this._xPos += windspeed;
+      this._yPos += windspeed;
+    } else if (winddirection > 90 && winddirection < 180){
+      this._xPos += windspeed;
+      this._yPos -= windspeed;
+    } else if (winddirection > 180 && winddirection < 270){
+      this._xPos -= windspeed;
+      this._yPos -= windspeed;
+    } else if (winddirection > 270 && winddirection < 360){
+      this._xPos -= windspeed;
+      this._yPos += windspeed;
+    }
 
     if (button.keyRight){
       this._el.classList = 'surfer surferright';
-      // console.log('right');
-      this._xPos += 7;
+      this._xPos += 10;
     }
     if (button.keyLeft){
       this._el.classList = 'surfer surferleft';
-      // console.log('left');
-      this._xPos -= 7;
+      this._xPos -= 10;
     }
     if (button.keyUp) {
       this._el.classList = 'surfer';
-      // console.log('up');
-      this._yPos += 5;
+      this._yPos += 10;
     }
     if (button.keyDown) {
       this._el.classList = 'surfer surferdown';
-      // console.log('up');
-      this._yPos -= 5;
+      this._yPos -= 10;
     }
   }
 
