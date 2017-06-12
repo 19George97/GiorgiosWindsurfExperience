@@ -40,11 +40,26 @@ var Game = (function () {
             new zboat('Belgen in boot', 'zeilboot.png', new Vector(-1, 3)),
             new zboat('Duitsers in boot', 'zeilboot.png', new Vector(-2, 1)),
             new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 2)),
+            new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(2, 1)),
+            new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 3)),
+            new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 0)),
+            new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 2)),
+            new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 1)),
+            new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 3)),
+            new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(1, 2)),
+            new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(0, 2)),
+            new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(2, 2)),
+            new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 2)),
             new zboat('Belgen in boot', 'zeilboot.png', new Vector(-4, 2)),
             new shark('Shark', 'fin.png', new Vector(1, -3)),
             new shark('Shark', 'fin.png', new Vector(1, -3)),
             new shark('Shark', 'fin.png', new Vector(-2, -1)),
-            new shark('Shark', 'fin.png', new Vector(-2, -2))
+            new shark('Shark', 'fin.png', new Vector(-2, -2)),
+            new shark('Shark', 'fin.png', new Vector(-2, -1)),
+            new shark('Shark', 'fin.png', new Vector(-1, -2)),
+            new shark('Shark', 'fin.png', new Vector(-3, -2)),
+            new shark('Shark', 'fin.png', new Vector(1, -3)),
+            new shark('Shark', 'fin.png', new Vector(0, -2)),
         ];
     };
     Game.prototype.render = function () {
@@ -153,7 +168,6 @@ var surfer = (function () {
         this._keyboardListener = new KeyListener();
     }
     surfer.prototype.move = function (windspeed, winddirection) {
-        var currentMovement = this._keyboardListener.keyevents;
         var button = this._keyboardListener;
         if (winddirection > 0 && winddirection < 90) {
             this._xPos += windspeed;
@@ -246,7 +260,7 @@ var wind = (function () {
 var zboat = (function (_super) {
     __extends(zboat, _super);
     function zboat(name, image, vector) {
-        return _super.call(this, 'Belgen in boot', 'zeilboot.png', vector) || this;
+        return _super.call(this, name, image, vector) || this;
     }
     return zboat;
 }(Obstacle));
@@ -254,7 +268,7 @@ var Collision = (function () {
     function Collision(game) {
         this._el = document.createElement('div');
         this._game = game;
-        this._surfer = this._game.surfer._el;
+        this._surfer = this._game.surfer.el;
         this._window = this._game.windowListener;
     }
     Collision.prototype.checkGameOver = function () {
@@ -270,8 +284,8 @@ var Collision = (function () {
     };
     Collision.prototype.obstacleSurferCollision = function () {
         for (var index in this._game.obstacles) {
-            if (this._surfer.offsetLeft + this._surfer.width >= this._game.obstacles[index]._el.offsetLeft && this._surfer.offsetLeft <= this._game.obstacles[index]._el.offsetLeft + this._game.obstacles[index]._el.width) {
-                if (this._surfer.offsetTop + this._surfer.height >= this._game.obstacles[index]._el.offsetTop && this._surfer.offsetTop <= this._game.obstacles[index]._el.offsetTop + this._game.obstacles[index]._el.height) {
+            if (this._surfer.offsetLeft + this._surfer.width >= this._game.obstacles[index].el.offsetLeft && this._surfer.offsetLeft <= this._game.obstacles[index].el.offsetLeft + this._game.obstacles[index].el.width) {
+                if (this._surfer.offsetTop + this._surfer.height >= this._game.obstacles[index].el.offsetTop && this._surfer.offsetTop <= this._game.obstacles[index].el.offsetTop + this._game.obstacles[index].el.height) {
                     return true;
                 }
             }
@@ -281,19 +295,19 @@ var Collision = (function () {
     Collision.prototype.boatOutOfBounds = function () {
         for (var index in this._game.obstacles) {
             var newspeed = this._game.obstacles[index].speed;
-            if (this._game.obstacles[index]._el.offsetLeft <= 0) {
+            if (this._game.obstacles[index].el.offsetLeft <= 0) {
                 console.log('boat krijgt een nieuwe vector, links weg');
                 newspeed = this._game.obstacles[index].speed.mirror_Y();
             }
-            if ((this._game.obstacles[index]._el.offsetLeft + this._game.obstacles[index]._el.width + 15) >= this._window.windowWidth) {
+            if ((this._game.obstacles[index].el.offsetLeft + this._game.obstacles[index].el.width + 15) >= this._window.windowWidth) {
                 console.log('boat krijgt een nieuwe vector, rechts weg');
                 newspeed = this._game.obstacles[index].speed.mirror_Y();
             }
-            if (this._game.obstacles[index]._el.offsetTop <= 0) {
+            if (this._game.obstacles[index].el.offsetTop <= 0) {
                 console.log('boat krijgt een nieuwe vector, boven weg');
                 newspeed = this._game.obstacles[index].speed.mirror_X();
             }
-            if ((this._game.obstacles[index]._el.offsetTop + this._game.obstacles[index]._el.height + 10) >= this._window.windowHeight) {
+            if ((this._game.obstacles[index].el.offsetTop + this._game.obstacles[index].el.height + 10) >= this._window.windowHeight) {
                 console.log('boat krijgt een nieuwe vector, onder weg');
                 newspeed = this._game.obstacles[index].speed.mirror_X();
             }
@@ -320,7 +334,6 @@ var Collision = (function () {
 var KeyListener = (function () {
     function KeyListener() {
         var _this = this;
-        this._keyevents = { left: false, right: false, up: false };
         this._keyUp = false;
         this._keyDown = false;
         this._keyLeft = false;
@@ -350,13 +363,6 @@ var KeyListener = (function () {
         window.addEventListener("keydown", this.keyUpDownHandler);
         window.addEventListener("keyup", this.keyUpDownHandler);
     }
-    Object.defineProperty(KeyListener.prototype, "keyevents", {
-        get: function () {
-            return this._keyevents;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(KeyListener.prototype, "keyUp", {
         get: function () {
             return this._keyUp;

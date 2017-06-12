@@ -1,7 +1,6 @@
 /** Class representing a keyboardListener */
 class KeyListener
 {
-    private _keyevents : any = {left:false, right:false, up:false} //should be dynamic
 
     private _keyUp : any = false;
     private _keyDown : any = false;
@@ -41,9 +40,6 @@ class KeyListener
      * Get the keyevents
      * @return {any} The keyevent value
      */
-    get keyevents(): any{
-        return this._keyevents;
-    }
 
     get keyUp(): any {
         return this._keyUp;

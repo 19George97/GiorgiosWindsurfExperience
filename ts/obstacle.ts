@@ -2,10 +2,10 @@
  * Created by giorgio on 24-05-17.
  */
 class Obstacle {
-    public _el: any = document.createElement('img');
+    private _el: any = document.createElement('img');
     private _baseUrl: string = './assets/images/obstacle/';
     private _imageName: string;
-    public _name: string;
+    private _name: string;
     position: Vector;
     speed: Vector;
 
@@ -28,35 +28,8 @@ class Obstacle {
 
 
     public move() {
-
-        // let displacement = this.speed.scale(interval);
-
         this.position = this.position.add(this.speed);
-
-
-        // if(winddirection > 0 &&  winddirection < 90) {
-        //     this._xPos += windspeed * 2;
-        //     this._yPos += windspeed * 2;
-        //     // this._game._wind._windDirection = winddirection;
-        // } else if (winddirection > 90 && winddirection < 180){
-        //     this._xPos += windspeed * 2;
-        //     this._yPos -= windspeed * 2;
-        //     // this._game._wind._windDirection = winddirection;
-        // } else if (winddirection > 180 && winddirection < 270){
-        //     this._xPos -= windspeed * 2;
-        //     this._yPos -= windspeed * 2;
-        //     // this._game._wind._windDirection = winddirection;
-        // } else if (winddirection > 270 && winddirection < 360){
-        //     this._xPos -= windspeed * 2;
-        //     this._yPos += windspeed * 2;
-        //     // this._game._wind._windDirection = winddirection;
-        // }
-
     }
-
-
-
-
 
     /**
      * Render coordinates on the Dom

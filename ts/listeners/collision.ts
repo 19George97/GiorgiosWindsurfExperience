@@ -5,8 +5,6 @@ class Collision{
     private _el: any = document.createElement('div');
     private _window: any;
     private _surfer: any;
-    // public _boat1: any;
-    // private boat1object: zboat;
 
 
     /**
@@ -15,7 +13,7 @@ class Collision{
      */
     constructor(game: Game){
         this._game = game;
-        this._surfer = this._game.surfer._el;
+        this._surfer = this._game.surfer.el;
         // this._boat1 = this._game.zboat._el;
         // this.boat1object = this._game.zboat;
         this._window = this._game.windowListener;
@@ -39,8 +37,8 @@ class Collision{
     private obstacleSurferCollision(){
         
         for(let index in this._game.obstacles){
-            if (this._surfer.offsetLeft + this._surfer.width >= this._game.obstacles[index]._el.offsetLeft && this._surfer.offsetLeft <= this._game.obstacles[index]._el.offsetLeft + this._game.obstacles[index]._el.width) {
-                if (this._surfer.offsetTop + this._surfer.height >= this._game.obstacles[index]._el.offsetTop && this._surfer.offsetTop <= this._game.obstacles[index]._el.offsetTop + this._game.obstacles[index]._el.height) {
+            if (this._surfer.offsetLeft + this._surfer.width >= this._game.obstacles[index].el.offsetLeft && this._surfer.offsetLeft <= this._game.obstacles[index].el.offsetLeft + this._game.obstacles[index].el.width) {
+                if (this._surfer.offsetTop + this._surfer.height >= this._game.obstacles[index].el.offsetTop && this._surfer.offsetTop <= this._game.obstacles[index].el.offsetTop + this._game.obstacles[index].el.height) {
                     return true;
                 }
             }
@@ -53,19 +51,19 @@ class Collision{
         for(let index in this._game.obstacles){
             let newspeed = this._game.obstacles[index].speed;
 
-            if(this._game.obstacles[index]._el.offsetLeft <= 0){
+            if(this._game.obstacles[index].el.offsetLeft <= 0){
                 console.log('boat krijgt een nieuwe vector, links weg');
                 newspeed =  this._game.obstacles[index].speed.mirror_Y();
             }
-            if((this._game.obstacles[index]._el.offsetLeft + this._game.obstacles[index]._el.width + 15) >= this._window.windowWidth){
+            if((this._game.obstacles[index].el.offsetLeft + this._game.obstacles[index].el.width + 15) >= this._window.windowWidth){
                 console.log('boat krijgt een nieuwe vector, rechts weg');
                 newspeed =  this._game.obstacles[index].speed.mirror_Y();
             }
-            if(this._game.obstacles[index]._el.offsetTop <= 0) {
+            if(this._game.obstacles[index].el.offsetTop <= 0) {
                 console.log('boat krijgt een nieuwe vector, boven weg');
                 newspeed =  this._game.obstacles[index].speed.mirror_X();
             }
-            if((this._game.obstacles[index]._el.offsetTop + this._game.obstacles[index]._el.height + 10) >= this._window.windowHeight) {
+            if((this._game.obstacles[index].el.offsetTop + this._game.obstacles[index].el.height + 10) >= this._window.windowHeight) {
                 console.log('boat krijgt een nieuwe vector, onder weg');
                 newspeed =  this._game.obstacles[index].speed.mirror_X();
             }

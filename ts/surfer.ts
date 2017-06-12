@@ -1,8 +1,8 @@
 /** Class representing a surfer */
 class surfer {
-  public _el: any = document.createElement('img');
+  private _el: any = document.createElement('img');
   private _className: string = 'surfer';
-  private _baseUrl: string = './assets/images/'
+  private _baseUrl: string = './assets/images/';
   private _imageName: string;
   private _xPos: number = 700;
   private _yPos: number = 400;
@@ -30,10 +30,9 @@ class surfer {
    * Move a plane
    */
   public move(windspeed: number, winddirection: number) {
-    const currentMovement = this._keyboardListener.keyevents; //could be loosely coupled by pubsub system
     const button = this._keyboardListener; //could be loosely coupled by pubsub system
 
-    // links of recht bewegen door de wind
+    // links of rechts bewegen door de wind
     if(winddirection > 0 &&  winddirection < 90) {
       this._xPos += windspeed;
       this._yPos += windspeed;

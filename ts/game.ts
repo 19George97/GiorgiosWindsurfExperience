@@ -1,13 +1,13 @@
 /** Class representing a Game */
 class Game{
-  public _el : Element = document.querySelector('.container');
+  private _el : Element = document.querySelector('.container');
   private _surfer : surfer;
-  public _wind : wind;
+  private _wind : wind;
   // private _zboat : zboat;
   private _obstacles: Array<Obstacle>;
   private _windowListener: WindowListener;
   private _collision: Collision;
-  public _gameOver: boolean = false;
+  private _gameOver: boolean = false;
 
   /**
    * Create a game
@@ -50,11 +50,26 @@ class Game{
       new zboat('Belgen in boot', 'zeilboot.png', new Vector(-1, 3)),
       new zboat('Duitsers in boot', 'zeilboot.png', new Vector(-2, 1)),
       new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 2)),
+      new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(2, 1)),
+      new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 3)),
+      new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 0)),
+      new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 2)),
+      new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 1)),
+      new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 3)),
+      new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(1, 2)),
+      new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(0, 2)),
+      new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(2, 2)),
+      new zboat('Nederlanders in boot', 'zeilboot.png', new Vector(-2, 2)),
       new zboat('Belgen in boot', 'zeilboot.png', new Vector(-4, 2)),
       new shark('Shark', 'fin.png', new Vector(1,-3)),
       new shark('Shark', 'fin.png', new Vector(1,-3)),
       new shark('Shark', 'fin.png', new Vector(-2,-1)),
-      new shark('Shark', 'fin.png', new Vector(-2,-2))
+      new shark('Shark', 'fin.png', new Vector(-2,-2)),
+      new shark('Shark', 'fin.png', new Vector(-2,-1)),
+      new shark('Shark', 'fin.png', new Vector(-1,-2)),
+      new shark('Shark', 'fin.png', new Vector(-3,-2)),
+      new shark('Shark', 'fin.png', new Vector(1,-3)),
+      new shark('Shark', 'fin.png', new Vector(0,-2)),
     ]
   }
 
