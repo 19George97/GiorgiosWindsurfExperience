@@ -6,5 +6,9 @@ constructor(name: string, image: string, vector: Vector){
     super(name, image, vector);
 }
 
-//move hierheen
+    public move() {
+        this.position = this.position.add(this.speed);
+    }
+
+
 }

@@ -262,6 +262,9 @@ var zboat = (function (_super) {
     function zboat(name, image, vector) {
         return _super.call(this, name, image, vector) || this;
     }
+    zboat.prototype.move = function () {
+        this.position = this.position.add(this.speed);
+    };
     return zboat;
 }(Obstacle));
 var Collision = (function () {
